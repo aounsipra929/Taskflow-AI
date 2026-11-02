@@ -1,0 +1,16 @@
+# PostgreSQL for local development:  docker compose up -d
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: todo_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: todo_user
+      POSTGRES_PASSWORD: todo_pass
+      POSTGRES_DB: todo_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - todo_pgdata:/var/lib/postgresql/data
+volumes:
+  todo_pgdata:
